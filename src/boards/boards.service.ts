@@ -38,4 +38,12 @@ export class BoardsService {
     deleteBoard(id: string) : void {
         this.boards.filter((board) => board.id !== id);
     }
+
+    // getBoardById로 board를 찾고
+    // 찾은 board status 값을 업데이트
+    updateBoardStatus(id: string, status:BoardStatus): Board {
+        const board = this.getBoardByID(id);
+        board.status = status;
+        return board;
+    }
 }
