@@ -58,6 +58,18 @@ export class BoardsService {
 
     }
 
+    async updateBoardStatus(id: number, status: BoardStatus): Promise<Board>{
+        const board = await this.getBoardByID(id);
+        board.status = status;
+
+        await this.boardRepository.save(board);
+        return board;
+    }
+
+    async getAllBoards(): Promise<Board[]> {
+        return this.boardRepository.find();
+    }
+
     // // 게시물 찾기
     // getBoardByID(id: string) : Board{
     //      const found = this.boards.find((board) => board.id === id);

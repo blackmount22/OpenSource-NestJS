@@ -22,6 +22,11 @@ export class BoardsController {
     //     return this.boardsService.createBoard(createBoardDto);
     // }
 
+    @Get('/')
+    getAllBoard(): Promise<Board[]> {
+        return this.boardsService.getAllBoards();
+    }
+
     @Get('/:id')
     getboardByID(@Param('id') id:number): Promise<Board>{
         return this.boardsService.getBoardByID(id);
@@ -38,22 +43,11 @@ export class BoardsController {
         return this.boardsService.deleteBoard(id);
     }
 
-    // @Get('/:id')
-    // // 두개 이상 파라미터 인 경우 (@Param() params: string[])
-    // getBoardByID(@Param('id') id: string) : Board {
-    //     return this.boardsService.getBoardByID(id);
-    // }
-
-    // @Delete('/:id')
-    // deleteBoard(@Param('id') id:string): void {
-    //     this.boardsService.deleteBoard(id);
-    // }
-
-    // @Patch('/:id/status')
-    // updateBoardStatus(
-    //     @Param('id') id: string,
-    //     @Body('status', BoardStatusValidationPipe) status: BoardStatus,
-    // ) {
-    //     return this.boardsService.updateBoardStatus(id, status);
-    // }
+    @Patch('/:id/status')
+    updateBoardStatus(
+        @Param('id', ParseIntPipe) id: number,
+        @Body('status', BoardStatusValidationPipe) status: BoardStatus,
+    ) {
+        return this.boardsService.updateBoardStatus(id, status);
+    }
 }
