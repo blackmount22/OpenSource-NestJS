@@ -1,13 +1,13 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity('user')
 export class User extends BaseEntity{
     @PrimaryGeneratedColumn()
-    id: number;
+    id:number;
 
     @Column()
-    username: string;
+    username:string;
 
     @Column()
-    password: string;
+    password:string;
 }

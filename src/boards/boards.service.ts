@@ -9,8 +9,8 @@ import { CreateBoardDto } from './dto/create-board.dto';
 @Injectable()
 export class BoardsService {
     constructor(
-        @InjectRepository(Board)
-        private boardRepository:BoardRepository,
+        // @InjectRepository(BoardRepository)
+        private boardRepository: BoardRepository,
     ) {}
 
     // getAllBoards(): Board[] {
