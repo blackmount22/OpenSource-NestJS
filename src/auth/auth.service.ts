@@ -7,12 +7,11 @@ import { UserRepository } from './user.repository';
 @Injectable()
 export class AuthService {
     constructor(
-        // @InjectRepository(User)
+        @InjectRepository(UserRepository)
         private userRepository: UserRepository
     ) {}
 
     async signUp(authCredentialsDto: AuthCredentialsDto): Promise<void> {
-        console.log(authCredentialsDto);
         return this.userRepository.createUser(authCredentialsDto);
     }
 }
